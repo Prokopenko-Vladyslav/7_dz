@@ -1,18 +1,20 @@
-import os
-import argparse
+import shutil
 
 def clean_folder(path):
-
-
-    print(f"Cleaning folder: {path}")
-
+    try:
+        shutil.rmtree(path)
+        print(f'Папка {path} успішно видалена')
+    except FileNotFoundError:
+        print(f'Папки {path} не існує')
+    except PermissionError:
+        print(f'Немає прав доступу для видалення {path}')
+    except Exception as e:
+        print(f'Виникла помилка при видаленні папки {path}: {e}')
 
 def main():
-    parser = argparse.ArgumentParser(description='Clean a folder')
-    parser.add_argument('folder_path', type=str, help='Path to the folder')
-    args = parser.parse_args()
-    
-    clean_folder(args.folder_path)
+    # Приклад використання:
+    path = input('Введіть шлях до папки для видалення: ')
+    clean_folder(path)
 
 if __name__ == "__main__":
     main()
