@@ -1,13 +1,13 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 
 setup(
     name='clean_folder',
     version='1.0',
-    packages=find_packages(),
+    packages=["clean_folder"],
     entry_points={
         'console_scripts': [
-            'clean-folder = clean_folder.clean:main'
+            'clean-folder = clean_folder.clean:clean_folder'
         ]
     },
 )
